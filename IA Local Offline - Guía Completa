@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Local Offline - Guía Completa</title>
+    <style>
+        :root {
+            --primary: #2A2F4F;
+            --secondary: #917FB3;
+            --accent: #E5BEEC;
+            --background: #FDE2F3;
+            --text: #2A2F4F;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--background) 0%, #ffffff 100%);
+            color: var(--text);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-top: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .code-block {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: "🖥️ Código";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f8f8f8;
+        }
+
+        .note {
+            background: #fff9db;
+            border-left: 4px solid #ffd700;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .note::before {
+            content: "📌";
+            position: absolute;
+            left: -35px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px dotted var(--accent);
+        }
+
+        a:hover {
+            color: var(--primary);
+            border-bottom-style: solid;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin: 0.8rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .code-block {
+                font-size: 0.9rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Implementación de IA Local Offline</h1>
+    
+    <div class="card">
+        <h2>📋 Requisitos del Sistema</h2>
+        <ul>
+            <li><strong>Hardware:</strong> 8GB RAM (16GB+ recomendado)</li>
+            <li><strong>Almacenamiento:</strong> 500MB-10GB (dependiendo del modelo)</li>
+            <li><strong>Software:</strong> Python 3.8+ y gestor de paquetes</li>
+            <li><strong>Opcional:</strong> GPU con soporte CUDA</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>🛠️ Configuración Inicial</h2>
+        
+        <h3>1. Instalación de Dependencias</h3>
+        <div class="code-block">
+            pip install torch transformers llama-cpp-python<br>
+            conda install -c conda-forge sentencepiece
+        </div>
+
+        <h3>2. Selección de Modelos</h3>
+        <ul>
+            <li><strong>CPU:</strong> GPT-2 Small, DistilBERT</li>
+            <li><strong>GPU:</strong> LLaMA 7B, Falcon-7B</li>
+            <li><strong>Optimizados:</strong> Alpaca.cpp, GPT4All</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>💻 Implementación Básica</h2>
+        <div class="code-block">
+            from transformers import pipeline<br><br>
+            
+            # Cargar modelo local<br>
+            chatbot = pipeline('text-generation', <br>
+                            model='./modelos/local-llama',<br>
+                            device='cpu')<br><br>
+            
+            # Generar respuesta<br>
+            respuesta = chatbot("¿Cómo funciona la IA local?",<br>
+                             max_length=200,<br>
+                             temperature=0.7)
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>Importante:</strong> Los modelos grandes pueden requerir:<br>
+        • Configuración específica de memoria<br>
+        • Optimización de parámetros<br>
+        • Ajuste de hyperparámetros
+    </div>
+
+    <div class="card">
+        <h2>📊 Comparativa de Modelos</h2>
+        <table>
+            <tr>
+                <th>Modelo</th>
+                <th>Tamaño</th>
+                <th>RAM Mínima</th>
+                <th>Rendimiento</th>
+            </tr>
+            <tr>
+                <td>GPT-2 Small</td>
+                <td>500MB</td>
+                <td>4GB</td>
+                <td>⭐️⭐️⭐️</td>
+            </tr>
+            <tr>
+                <td>LLaMA 7B</td>
+                <td>4GB</td>
+                <td>16GB</td>
+                <td>⭐️⭐️⭐️⭐️</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>🔗 Recursos Adicionales</h2>
+        <ul>
+            <li><a href="https://huggingface.co/models">Modelos en Hugging Face</a></li>
+            <li><a href="https://github.com/ggerganov/llama.cpp">Llama.cpp GitHub</a></li>
+            <li><a href="https://python.langchain.com/">Documentación LangChain</a></li>
+        </ul>
+    </div>
+</body>
+</html>
